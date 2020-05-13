@@ -1,4 +1,9 @@
 #!/usr/bin/perl
+# credits:
+# [1] https://stackoverflow.com/questions/61748474/smart-formatting-of-print-output#comments-61748474
+# [2] https://stackoverflow.com/questions/619393/how-do-i-write-text-in-aligned-columns-in-perl#answer-622434
+# [3] https://stackoverflow.com/questions/18457175/how-to-printf-a-array-without-describing-the-format-of-each-element#answer-18457309
+
 use strict;
 use warnings;
 use Data::Dumper;
@@ -47,6 +52,7 @@ for ($x = 0; $x < 13; $x++) {
 	push @ec, $ca if ($ca >= 39 and $ca<= 51);
 }	
 
+# printf usage as per suggestion from [1]
 printf "%31s", "\x{2660} "; print $deck{$_}," " foreach (sort {$a <=> $b} @ns); print "\n";
 printf "%31s", "\x{2665} "; print $deck{$_}," " foreach (sort {$a <=> $b} @nh); print "\n";
 printf "%31s", "\x{2666} "; print $deck{$_}," " foreach (sort {$a <=> $b} @nd); print "\n";
@@ -57,8 +63,7 @@ push @wh1, "\x{2665} "; push @wh1, "$deck{$_} " foreach (sort {$a <=> $b} @wh);
 push @wd1, "\x{2666} "; push @wd1, "$deck{$_} " foreach (sort {$a <=> $b} @wd);
 push @wc1, "\x{2663} "; push @wc1, "$deck{$_} " foreach (sort {$a <=> $b} @wc);
 
-# https://stackoverflow.com/questions/619393/how-do-i-write-text-in-aligned-columns-in-perl
-# https://stackoverflow.com/questions/18457175/how-to-printf-a-array-without-describing-the-format-of-each-element
+# below code (for loop and length usage) with support from [2] and [3]
 printf "%s" , $_ for @ws1; printf "%*s", 62-length(join("",@ws1)), " "; 
 	print"\x{2660} "; print $deck{$_}," " foreach (sort {$a <=> $b} @es); print "\n";
 printf "%s" , $_ for @wh1; printf "%*s", 62-length(join("",@wh1)), " "; 
@@ -72,6 +77,4 @@ printf "%31s", "\x{2660} "; print $deck{$_}," " foreach (sort {$a <=> $b} @ss); 
 printf "%31s", "\x{2665} "; print $deck{$_}," " foreach (sort {$a <=> $b} @sh); print "\n";
 printf "%31s", "\x{2666} "; print $deck{$_}," " foreach (sort {$a <=> $b} @sd); print "\n";
 printf "%31s", "\x{2663} "; print $deck{$_}," " foreach (sort {$a <=> $b} @sc); print "\n";
-
-
 
