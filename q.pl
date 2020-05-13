@@ -58,6 +58,7 @@ push @wd1, "\x{2666} "; push @wd1, "$deck{$_} " foreach (sort {$a <=> $b} @wd);
 push @wc1, "\x{2663} "; push @wc1, "$deck{$_} " foreach (sort {$a <=> $b} @wc);
 
 # https://stackoverflow.com/questions/619393/how-do-i-write-text-in-aligned-columns-in-perl
+# https://stackoverflow.com/questions/18457175/how-to-printf-a-array-without-describing-the-format-of-each-element
 printf "%s" , $_ for @ws1; printf "%*s", 62-length(join("",@ws1)), " "; 
 	print"\x{2660} "; print $deck{$_}," " foreach (sort {$a <=> $b} @es); print "\n";
 printf "%s" , $_ for @wh1; printf "%*s", 62-length(join("",@wh1)), " "; 
