@@ -19,7 +19,7 @@ my %deck = (
 my $x;
 my @decksh = shuffle(keys(%deck));
 my (@ss,@sh,@sd,@sc,@ws,@wh,@wd,@wc,@ns,@nh,@nd,@nc,@es,@eh,@ed,@ec);
-my (@ss1,@sh1,@sd1,@sc1,@ws1,@wh1,@wd1,@wc1,@ns1,@nh1,@nd1,@nc1,@es1,@eh1,@ed1,@ec1);
+my (@ws1,@wh1,@wd1,@wc1);
 
 for ($x = 0; $x < 13; $x++) {
 	my $ca = shift @decksh;
