@@ -19,6 +19,7 @@ my %deck = (
 my $x;
 my @decksh = shuffle(keys(%deck));
 my (@ss,@sh,@sd,@sc,@ws,@wh,@wd,@wc,@ns,@nh,@nd,@nc,@es,@eh,@ed,@ec);
+my (@ss1,@sh1,@sd1,@sc1,@ws1,@wh1,@wd1,@wc1,@ns1,@nh1,@nd1,@nc1,@es1,@eh1,@ed1,@ec1);
 
 for ($x = 0; $x < 13; $x++) {
 	my $ca = shift @decksh;
@@ -46,20 +47,30 @@ for ($x = 0; $x < 13; $x++) {
 	push @ec, $ca if ($ca >= 39 and $ca<= 51);
 }	
 
-print "\t\t\t\x{2660} "; print $deck{$_}," " foreach (sort {$a <=> $b} @ns); print "\n";
-print "\t\t\t\x{2665} "; print $deck{$_}," " foreach (sort {$a <=> $b} @nh); print "\n";
-print "\t\t\t\x{2666} "; print $deck{$_}," " foreach (sort {$a <=> $b} @nd); print "\n";
-print "\t\t\t\x{2663} "; print $deck{$_}," " foreach (sort {$a <=> $b} @nc); print "\n";
-print "\x{2660} "; print $deck{$_}," " foreach (sort {$a <=> $b} @ws); print "\n";
-print "\x{2665} "; print $deck{$_}," " foreach (sort {$a <=> $b} @wh); print "\n";
-print "\x{2666} "; print $deck{$_}," " foreach (sort {$a <=> $b} @wd); print "\n";
-print "\x{2663} "; print $deck{$_}," " foreach (sort {$a <=> $b} @wc); print "\n";
-print "\t\t\t\t\t\t\x{2660} "; print $deck{$_}," " foreach (sort {$a <=> $b} @es); print "\n";
-print "\t\t\t\t\t\t\x{2665} "; print $deck{$_}," " foreach (sort {$a <=> $b} @eh); print "\n";
-print "\t\t\t\t\t\t\x{2666} "; print $deck{$_}," " foreach (sort {$a <=> $b} @ed); print "\n";
-print "\t\t\t\t\t\t\x{2663} "; print $deck{$_}," " foreach (sort {$a <=> $b} @ec); print "\n";
-print "\t\t\t\x{2660} "; print $deck{$_}," " foreach (sort {$a <=> $b} @ss); print "\n";
-print "\t\t\t\x{2665} "; print $deck{$_}," " foreach (sort {$a <=> $b} @sh); print "\n";
-print "\t\t\t\x{2666} "; print $deck{$_}," " foreach (sort {$a <=> $b} @sd); print "\n";
-print "\t\t\t\x{2663} "; print $deck{$_}," " foreach (sort {$a <=> $b} @sc); print "\n";
+printf "%31s", "\x{2660} "; print $deck{$_}," " foreach (sort {$a <=> $b} @ns); print "\n";
+printf "%31s", "\x{2665} "; print $deck{$_}," " foreach (sort {$a <=> $b} @nh); print "\n";
+printf "%31s", "\x{2666} "; print $deck{$_}," " foreach (sort {$a <=> $b} @nd); print "\n";
+printf "%31s", "\x{2663} "; print $deck{$_}," " foreach (sort {$a <=> $b} @nc); print "\n";
+
+push @ws1, "\x{2660} "; push @ws1, "$deck{$_} " foreach (sort {$a <=> $b} @ws);
+push @wh1, "\x{2665} "; push @wh1, "$deck{$_} " foreach (sort {$a <=> $b} @wh);
+push @wd1, "\x{2666} "; push @wd1, "$deck{$_} " foreach (sort {$a <=> $b} @wd);
+push @wc1, "\x{2663} "; push @wc1, "$deck{$_} " foreach (sort {$a <=> $b} @wc);
+
+# https://stackoverflow.com/questions/619393/how-do-i-write-text-in-aligned-columns-in-perl
+printf "%s" , $_ for @ws1; printf "%*s", 62-length(join("",@ws1)), " "; 
+	print"\x{2660} "; print $deck{$_}," " foreach (sort {$a <=> $b} @es); print "\n";
+printf "%s" , $_ for @wh1; printf "%*s", 62-length(join("",@wh1)), " "; 
+	print"\x{2665} "; print $deck{$_}," " foreach (sort {$a <=> $b} @eh); print "\n";
+printf "%s" , $_ for @wd1; printf "%*s", 62-length(join("",@wd1)), " "; 
+	print"\x{2666} "; print $deck{$_}," " foreach (sort {$a <=> $b} @ed); print "\n"; 
+printf "%s" , $_ for @wc1; printf "%*s", 62-length(join("",@wc1)), " "; 
+	print"\x{2663} "; print $deck{$_}," " foreach (sort {$a <=> $b} @ec); print "\n"; 
+
+printf "%31s", "\x{2660} "; print $deck{$_}," " foreach (sort {$a <=> $b} @ss); print "\n";
+printf "%31s", "\x{2665} "; print $deck{$_}," " foreach (sort {$a <=> $b} @sh); print "\n";
+printf "%31s", "\x{2666} "; print $deck{$_}," " foreach (sort {$a <=> $b} @sd); print "\n";
+printf "%31s", "\x{2663} "; print $deck{$_}," " foreach (sort {$a <=> $b} @sc); print "\n";
+
+
 
