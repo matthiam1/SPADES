@@ -46,7 +46,9 @@ sub show1hand {
   my $hand = shift;
 
   for (@suits) {
-    print "\t\t\t", suit_hand($_, $hand->{$_}), "\n";
+    printf "%31s%s \n", 
+      " ", 
+      suit_hand($_, $hand->{$_});
   }
 }
 
@@ -54,9 +56,10 @@ sub show2hands {
   my ($hand1, $hand2) = @_;
 
   for (@suits) {
-    printf "%-40s %s\n",
-      suit_hand($_, $hand1->{$_}),
-      suit_hand($_, $hand2->{$_});
+    printf "%-31s%31s%s\n",
+      suit_hand($_, $hand1->{$_}), 
+      " ",
+      suit_hand($_, $hand2->{$_}); 
   }
 }
 
@@ -65,9 +68,9 @@ sub suit_hand {
 
   my %display = (11 => 'J', 12 => 'Q', 13 => 'K', 14 => 'A');
 
-  my $card_str = join ' ',
-                 map { $display{$_} // $_ }
-                 sort { $b <=> $a } @$cards;
+  my $card_str = defined($cards) ?                                              
+                        join ' ', map { $display{$_} // $_ } sort { $b <=> $a } @$cards : 
+                        '';
 
   return "$suit{$suit} $card_str";
 }
