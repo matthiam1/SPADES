@@ -46,7 +46,7 @@ sub show1hand {
   my $hand = shift;
 
   for (@suits) {
-    printf "%31s%s \n", 
+    printf "%29s%s \n", 
       " ", 
       suit_hand($_, $hand->{$_});
   }
@@ -56,7 +56,7 @@ sub show2hands {
   my ($hand1, $hand2) = @_;
 
   for (@suits) {
-    printf "%-31s%31s%s\n",
+    printf "%-29s%29s%s\n",
       suit_hand($_, $hand1->{$_}), 
       "",
       suit_hand($_, $hand2->{$_}); 
