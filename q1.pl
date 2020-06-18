@@ -58,7 +58,7 @@ sub show2hands {
   for (@suits) {
     printf "%-31s%31s%s\n",
       suit_hand($_, $hand1->{$_}), 
-      " ",
+      "",
       suit_hand($_, $hand2->{$_}); 
   }
 }
@@ -68,7 +68,7 @@ sub suit_hand {
 
   my %display = (11 => 'J', 12 => 'Q', 13 => 'K', 14 => 'A');
 
-  my $card_str = defined($cards) ? # checks if there are any cards of given suit and hand                                              
+  my $card_str = defined($cards) ? # checks if there are any cards of a suit
                         join ' ', map { $display{$_} // $_ } sort { $b <=> $a } @$cards : 
                         '';
 
