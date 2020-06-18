@@ -68,7 +68,7 @@ sub suit_hand {
 
   my %display = (11 => 'J', 12 => 'Q', 13 => 'K', 14 => 'A');
 
-  my $card_str = defined($cards) ?                                              
+  my $card_str = defined($cards) ? # checks if there are any cards of given suit and hand                                              
                         join ' ', map { $display{$_} // $_ } sort { $b <=> $a } @$cards : 
                         '';
 
